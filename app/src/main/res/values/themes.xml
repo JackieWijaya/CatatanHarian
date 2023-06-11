@@ -5,5 +5,11 @@
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
 
+    <style name="Base.Theme.CatatanHarian.ActionBar" parent="Theme.Material3.DayNight">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    </style>
+
     <style name="Theme.CatatanHarian" parent="Base.Theme.CatatanHarian" />
+    <style name="Theme.CatatanHarian.ActionBar" parent="Base.Theme.CatatanHarian.ActionBar" />
 </resources>
