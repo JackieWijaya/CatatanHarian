@@ -3,8 +3,23 @@ package jackie.catatanharian;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 public class Utilities {
     public static final String PREFERENCE_FILE_KEY = Utilities.class.getPackage().getName();
+    public static final String BASE_URL = "https://api-catatan.vercel.app/";
+    public static Retrofit retrofit;
+
+    public static Retrofit getRetrofit(){
+        if (retrofit == null){
+            retrofit = new Retrofit.Builder()
+                    .baseUrl(BASE_URL)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build();
+        }
+        return retrofit;
+    }
 
     public static void clearUser(Context context){
         SharedPreferences sp = context.getSharedPreferences(PREFERENCE_FILE_KEY, Context.MODE_PRIVATE);
