@@ -3,6 +3,7 @@ package jackie.catatanharian;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,10 +15,15 @@ import jackie.catatanharian.databinding.ItemUnggahBinding;
 
 public class UnggahViewAdapter extends RecyclerView.Adapter<UnggahViewAdapter.ViewHolder> {
     private List<Unggah> data = new ArrayList<>();
+    private OnItemLongClickListener onItemLongClickListener;
 
     public void setData(List<Unggah> data) {
         this.data = data;
         notifyDataSetChanged();
+    }
+
+    public void setOnItemLongClickListener(OnItemLongClickListener onItemLongClickListener) {
+        this.onItemLongClickListener = onItemLongClickListener;
     }
 
     @NonNull
@@ -33,6 +39,13 @@ public class UnggahViewAdapter extends RecyclerView.Adapter<UnggahViewAdapter.Vi
         holder.itemUnggahBinding.tvUsername.setText(unggah.getUsername());
         holder.itemUnggahBinding.tvContent.setText(unggah.getContent());
         holder.itemUnggahBinding.tvCreateDate.setText(unggah.getCreated_date());
+        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                onItemLongClickListener.onItemLongClick(v, unggah, pos);
+                return false;
+            }
+        });
     }
 
     @Override
@@ -47,5 +60,9 @@ public class UnggahViewAdapter extends RecyclerView.Adapter<UnggahViewAdapter.Vi
             super(itemView.getRoot());
             itemUnggahBinding = itemView;
         }
+    }
+
+    public interface OnItemLongClickListener {
+        void onItemLongClick(View view, Unggah unggah, int position);
     }
 }
