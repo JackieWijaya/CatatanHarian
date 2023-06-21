@@ -16,10 +16,11 @@
         <ImageView
             android:layout_width="120dp"
             android:layout_height="120dp"
-            android:src="@mipmap/ic_launcher"
+            android:src="@drawable/ic_post_add_24"
             android:layout_gravity="center"
             android:layout_marginTop="30dp"
-            android:layout_marginBottom="30dp"/>
+            android:layout_marginBottom="30dp"
+            app:tint="#81509D"/>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/til_username"
